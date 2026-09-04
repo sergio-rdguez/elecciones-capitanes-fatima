@@ -41,9 +41,7 @@ function initVotar() {
 
   selectorVotante.innerHTML =
     '<option value="">-- Selecciona tu nombre --</option>' +
-    VOTANTES.filter((v) => !v.primerCapitan)
-      .map((v) => `<option value="${v.id}">${v.name}</option>`)
-      .join("");
+    VOTANTES.map((v) => `<option value="${v.id}">${v.name}</option>`).join("");
 
   listaCandidatos.innerHTML = CANDIDATOS.map(
     (c) => `
@@ -193,13 +191,12 @@ function initResultados() {
       })
       .join("");
 
-    const totalVotantes = VOTANTES.filter((v) => !v.primerCapitan).length;
+    const totalVotantes = VOTANTES.length;
     const pct = Math.round((votantesQueVotaron.size / totalVotantes) * 100);
     progreso.textContent = `${votantesQueVotaron.size} / ${totalVotantes} jugadores han votado`;
     if (barraProgreso) barraProgreso.style.width = `${pct}%`;
 
-    listaAsistencia.innerHTML = VOTANTES.filter((v) => !v.primerCapitan)
-      .map((v) => {
+    listaAsistencia.innerHTML = VOTANTES.map((v) => {
         const votado = votantesQueVotaron.has(v.id);
         return `<div class="asistencia-item ${votado ? "votado" : "pendiente"}">
           ${votado ? "✅" : "⬜"} ${v.name}
