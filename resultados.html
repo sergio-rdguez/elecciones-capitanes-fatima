@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resultados · Elecciones Capitanes ACD Fátima</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body data-page="resultados">
+  <header class="top">
+    <div class="escudo">🔴⚽</div>
+    <h1>ACD Fátima</h1>
+    <p>Elecciones Segundo y Tercer Capitán · Temporada 2026/2027</p>
+    <nav class="tabs">
+      <a href="index.html">Inicio</a>
+      <a href="votar.html">Votar</a>
+      <a href="resultados.html" class="activo">Resultados</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <span class="pill">Capitán actual</span>
+      <div class="capitan-actual" style="margin-top:0.8rem">
+        <div class="medalla">🎖️</div>
+        <div>
+          <div class="nombre">Sergio Rodríguez Martín</div>
+          <div class="rol">Primer Capitán</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Ranking de votos (en directo)</h2>
+      <p style="color:var(--texto-suave); font-size:0.88rem; margin-top:-0.4rem">
+        1º puesto → Segundo Capitán &nbsp;·&nbsp; 3º puesto → Tercer Capitán
+      </p>
+      <table class="ranking">
+        <thead>
+          <tr><th>#</th><th>Jugador</th><th>Votos</th></tr>
+        </thead>
+        <tbody id="cuerpo-ranking"></tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>Control de asistencia a la votación</h2>
+      <div id="progreso-votos" class="progreso-votos"></div>
+      <div id="lista-asistencia" class="asistencia-lista"></div>
+    </div>
+  </main>
+
+  <footer>ACD Fátima · Elecciones de capitanes 2026/2027</footer>
+
+  <script src="assets/firebase-config.js"></script>
+  <script src="assets/roster.js"></script>
+  <script type="module" src="assets/app.js"></script>
+</body>
+</html>

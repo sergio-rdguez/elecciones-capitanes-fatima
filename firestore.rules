@@ -1,0 +1,16 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /votes/{voterId} {
+      allow read: if true;
+      allow create: if request.resource.data.candidates is list
+                    && request.resource.data.candidates.size() == 2
+                    && request.resource.data.keys().hasAll(['voterName', 'candidates', 'timestamp'])
+                    && !exists(/databases/$(database)/documents/votes/$(voterId));
+      allow update, delete: if false;
+    }
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

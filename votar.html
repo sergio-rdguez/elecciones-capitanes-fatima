@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Votar · Elecciones Capitanes ACD Fátima</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body data-page="votar">
+  <header class="top">
+    <div class="escudo">🔴⚽</div>
+    <h1>ACD Fátima</h1>
+    <p>Elecciones Segundo y Tercer Capitán · Temporada 2026/2027</p>
+    <nav class="tabs">
+      <a href="index.html">Inicio</a>
+      <a href="votar.html" class="activo">Votar</a>
+      <a href="resultados.html">Resultados</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>Emitir tu voto</h2>
+      <p>Selecciona tu nombre y después marca a <strong>2 compañeros</strong>. Solo se admite un voto por jugador.</p>
+
+      <label class="campo" for="selector-votante">¿Quién eres?</label>
+      <select id="selector-votante"></select>
+
+      <div id="bloque-candidatos" style="display:none; margin-top:1.4rem">
+        <h3>Elige a 2 candidatos</h3>
+        <div id="contador-seleccion" class="contador-seleccion">0 / 2 seleccionados</div>
+        <div id="lista-candidatos" class="candidatos-lista"></div>
+        <button id="btn-votar" class="btn btn-primario" disabled>Enviar voto</button>
+      </div>
+
+      <div id="mensaje-votar" class="mensaje"></div>
+    </div>
+  </main>
+
+  <footer>ACD Fátima · Elecciones de capitanes 2026/2027</footer>
+
+  <script src="assets/firebase-config.js"></script>
+  <script src="assets/roster.js"></script>
+  <script type="module" src="assets/app.js"></script>
+</body>
+</html>
