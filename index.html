@@ -4,18 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Elecciones Capitanes ACD Fátima 2026/2027</title>
+  <link rel="icon" type="image/png" href="assets/splash.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
   <header class="top">
-    <div class="escudo">🔴⚽</div>
-    <h1>ACD Fátima</h1>
-    <p>Elecciones Segundo y Tercer Capitán · Temporada 2026/2027</p>
-    <nav class="tabs">
-      <a href="index.html" class="activo">Inicio</a>
-      <a href="votar.html">Votar</a>
-      <a href="resultados.html">Resultados</a>
-    </nav>
+    <div class="header-inner">
+      <img src="assets/splash.png" alt="Escudo ACD Fátima" class="escudo-img" />
+      <h1>ACD Fátima</h1>
+      <p>Elecciones Segundo y Tercer Capitán · Temporada 2026/2027</p>
+      <nav class="tabs">
+        <a href="index.html" class="activo">Inicio</a>
+        <a href="votar.html">Votar</a>
+        <a href="resultados.html">Resultados</a>
+      </nav>
+    </div>
   </header>
 
   <main>
@@ -32,19 +38,38 @@
 
     <div class="card">
       <h2>¿Cómo funciona la votación?</h2>
-      <ol class="reglas">
-        <li>Cada jugador del equipo vota <strong>una sola vez</strong>, seleccionando su propio nombre en un listado.</li>
-        <li>En cada voto se eligen <strong>2 compañeros</strong> (no se distingue el orden al votar).</li>
-        <li>Sergio Rodríguez Martín ya es el Primer Capitán, por lo que <strong>no es candidato</strong> en esta votación.</li>
-        <li>Al cerrar la votación, se suman los votos de todos los jugadores:
-          <ul>
-            <li>El jugador con <strong>más votos (1º)</strong> será el <strong>Segundo Capitán</strong>.</li>
-            <li>El jugador con el <strong>3er mayor número de votos</strong> será el <strong>Tercer Capitán</strong>.</li>
-          </ul>
-        </li>
-        <li>Queda registrado qué jugadores han votado (para controlar la participación), pero <strong>no se muestra públicamente a quién votó cada uno</strong>.</li>
-        <li>No se puede votar más de una vez por jugador.</li>
-      </ol>
+      <div class="reglas-lista">
+        <div class="regla-item">
+          <span class="regla-num">1</span>
+          <p>Cada jugador del equipo vota <strong>una sola vez</strong>, seleccionando su propio nombre en un listado.</p>
+        </div>
+        <div class="regla-item">
+          <span class="regla-num">2</span>
+          <p>En cada voto se eligen <strong>2 compañeros</strong> (no se distingue el orden al votar).</p>
+        </div>
+        <div class="regla-item">
+          <span class="regla-num">3</span>
+          <p>Sergio Rodríguez Martín ya es el Primer Capitán, por lo que <strong>no es candidato</strong> en esta votación.</p>
+        </div>
+        <div class="regla-item">
+          <span class="regla-num">4</span>
+          <div>
+            <p>Al cerrar la votación, se suman los votos de todos los jugadores:</p>
+            <div class="resultado-mini-grid">
+              <div class="resultado-mini">🥈 <strong>1º en votos → Segundo Capitán</strong></div>
+              <div class="resultado-mini">🥉 <strong>3º en votos → Tercer Capitán</strong></div>
+            </div>
+          </div>
+        </div>
+        <div class="regla-item">
+          <span class="regla-num">5</span>
+          <p>Queda registrado qué jugadores han votado (para controlar la participación), pero <strong>no se muestra públicamente a quién votó cada uno</strong>.</p>
+        </div>
+        <div class="regla-item">
+          <span class="regla-num">6</span>
+          <p>No se puede votar más de una vez por jugador.</p>
+        </div>
+      </div>
     </div>
 
     <div class="card">

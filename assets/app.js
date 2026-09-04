@@ -14,6 +14,13 @@ const app = initializeApp(FIREBASE_CONFIG);
 const db = getFirestore(app);
 const VOTES_COLLECTION = "votes";
 
+function iniciales(nombre) {
+  const partes = nombre.trim().split(/\s+/);
+  const a = partes[0]?.[0] || "";
+  const b = partes[1]?.[0] || "";
+  return (a + b).toUpperCase();
+}
+
 function mostrarMensaje(el, texto, tipo) {
   el.textContent = texto;
   el.className = `mensaje visible ${tipo}`;
@@ -42,7 +49,8 @@ function initVotar() {
     (c) => `
       <label class="candidato-opcion" data-id="${c.id}">
         <input type="checkbox" value="${c.id}" name="candidato" />
-        <span>${c.name}</span>
+        <span class="avatar">${iniciales(c.name)}</span>
+        <span class="candidato-nombre">${c.name}</span>
       </label>`
   ).join("");
 
@@ -129,6 +137,8 @@ function initResultados() {
   const cuerpoRanking = document.getElementById("cuerpo-ranking");
   const listaAsistencia = document.getElementById("lista-asistencia");
   const progreso = document.getElementById("progreso-votos");
+  const barraProgreso = document.getElementById("barra-progreso-votos");
+  const avisoSinVotos = document.getElementById("aviso-sin-votos");
 
   onSnapshot(collection(db, VOTES_COLLECTION), (snapshot) => {
     const votosPorCandidato = {};
@@ -143,39 +153,50 @@ function initResultados() {
       });
     });
 
-    const ranking = Object.entries(votosPorCandidato)
-      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+    const ranking = Object.entries(votosPorCandidato).sort(
+      (a, b) => b[1] - a[1] || a[0].localeCompare(b[0])
+    );
 
     const maxVotos = ranking.length ? ranking[0][1] : 0;
+    avisoSinVotos.style.display = maxVotos === 0 ? "block" : "none";
 
     cuerpoRanking.innerHTML = ranking
       .map(([nombre, votos], i) => {
         const puesto = i + 1;
+        // Las etiquetas de capitán solo cuentan cuando hay votos reales:
+        // con 0 votos para todos, el orden es alfabético y no debe leerse como un resultado.
         let claseFila = "";
         let etiqueta = "";
-        if (puesto === 1) {
+        if (votos > 0 && puesto === 1) {
           claseFila = "puesto-1";
           etiqueta = '<span class="medalla-fila">🥈</span>Segundo Capitán';
-        } else if (puesto === 3) {
+        } else if (votos > 0 && puesto === 3) {
           claseFila = "puesto-3";
           etiqueta = '<span class="medalla-fila">🥉</span>Tercer Capitán';
         }
         const ancho = maxVotos ? Math.round((votos / maxVotos) * 100) : 0;
         return `
-          <tr class="${claseFila}">
-            <td>${puesto}</td>
-            <td>${nombre}${etiqueta ? `<br/><small>${etiqueta}</small>` : ""}</td>
-            <td>
-              ${votos}
-              <div class="barra-votos" style="width:${ancho}%"></div>
-            </td>
-          </tr>`;
+          <div class="ranking-row ${claseFila}">
+            <div class="ranking-rank">${puesto}</div>
+            <div class="avatar">${iniciales(nombre)}</div>
+            <div class="ranking-info">
+              <div class="ranking-nombre">${nombre}</div>
+              ${etiqueta ? `<div class="ranking-etiqueta">${etiqueta}</div>` : ""}
+            </div>
+            <div class="ranking-votos">
+              <div class="ranking-votos-num">${votos}</div>
+              <div class="barra-votos-track">
+                <div class="barra-votos-fill" style="width:${ancho}%"></div>
+              </div>
+            </div>
+          </div>`;
       })
       .join("");
 
-    progreso.textContent = `${votantesQueVotaron.size} / ${
-      VOTANTES.filter((v) => !v.primerCapitan).length
-    } jugadores han votado`;
+    const totalVotantes = VOTANTES.filter((v) => !v.primerCapitan).length;
+    const pct = Math.round((votantesQueVotaron.size / totalVotantes) * 100);
+    progreso.textContent = `${votantesQueVotaron.size} / ${totalVotantes} jugadores han votado`;
+    if (barraProgreso) barraProgreso.style.width = `${pct}%`;
 
     listaAsistencia.innerHTML = VOTANTES.filter((v) => !v.primerCapitan)
       .map((v) => {

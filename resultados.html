@@ -4,18 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Resultados · Elecciones Capitanes ACD Fátima</title>
+  <link rel="icon" type="image/png" href="assets/splash.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body data-page="resultados">
   <header class="top">
-    <div class="escudo">🔴⚽</div>
-    <h1>ACD Fátima</h1>
-    <p>Elecciones Segundo y Tercer Capitán · Temporada 2026/2027</p>
-    <nav class="tabs">
-      <a href="index.html">Inicio</a>
-      <a href="votar.html">Votar</a>
-      <a href="resultados.html" class="activo">Resultados</a>
-    </nav>
+    <div class="header-inner">
+      <img src="assets/splash.png" alt="Escudo ACD Fátima" class="escudo-img" />
+      <h1>ACD Fátima</h1>
+      <p>Elecciones Segundo y Tercer Capitán · Temporada 2026/2027</p>
+      <nav class="tabs">
+        <a href="index.html">Inicio</a>
+        <a href="votar.html">Votar</a>
+        <a href="resultados.html" class="activo">Resultados</a>
+      </nav>
+    </div>
   </header>
 
   <main>
@@ -35,17 +41,18 @@
       <p style="color:var(--texto-suave); font-size:0.88rem; margin-top:-0.4rem">
         1º puesto → Segundo Capitán &nbsp;·&nbsp; 3º puesto → Tercer Capitán
       </p>
-      <table class="ranking">
-        <thead>
-          <tr><th>#</th><th>Jugador</th><th>Votos</th></tr>
-        </thead>
-        <tbody id="cuerpo-ranking"></tbody>
-      </table>
+      <div id="aviso-sin-votos" class="mensaje aviso" style="display:none">
+        Todavía no se ha registrado ningún voto. El orden que verás abajo es solo alfabético, no un resultado.
+      </div>
+      <div id="cuerpo-ranking" class="ranking-list"></div>
     </div>
 
     <div class="card">
       <h2>Control de asistencia a la votación</h2>
       <div id="progreso-votos" class="progreso-votos"></div>
+      <div class="barra-progreso-track">
+        <div id="barra-progreso-votos" class="barra-progreso-fill"></div>
+      </div>
       <div id="lista-asistencia" class="asistencia-lista"></div>
     </div>
   </main>
