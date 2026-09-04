@@ -168,8 +168,8 @@ function initResultados() {
         if (votos > 0 && puesto === 1) {
           claseFila = "puesto-1";
           etiqueta = '<span class="medalla-fila">🥈</span>Segundo Capitán';
-        } else if (votos > 0 && puesto === 3) {
-          claseFila = "puesto-3";
+        } else if (votos > 0 && puesto === 2) {
+          claseFila = "puesto-2";
           etiqueta = '<span class="medalla-fila">🥉</span>Tercer Capitán';
         }
         const ancho = maxVotos ? Math.round((votos / maxVotos) * 100) : 0;

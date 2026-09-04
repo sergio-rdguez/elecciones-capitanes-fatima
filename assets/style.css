@@ -462,7 +462,7 @@ label.campo {
   box-shadow: 0 8px 20px rgba(150, 24, 42, 0.12);
 }
 
-.ranking-row.puesto-3 {
+.ranking-row.puesto-2 {
   background: linear-gradient(135deg, #fff6e2, #fff);
   border-color: #eddca4;
   box-shadow: 0 8px 20px rgba(207, 162, 39, 0.14);
@@ -478,7 +478,7 @@ label.campo {
 }
 
 .ranking-row.puesto-1 .ranking-rank,
-.ranking-row.puesto-3 .ranking-rank {
+.ranking-row.puesto-2 .ranking-rank {
   color: var(--rojo-oscuro);
 }
 

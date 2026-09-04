@@ -3,7 +3,7 @@
 Web estática (GitHub Pages) para votar al Segundo y Tercer Capitán del equipo.
 
 - El jugador más votado (1º) → **Segundo Capitán**
-- El 3º más votado → **Tercer Capitán**
+- El 2º más votado → **Tercer Capitán**
 - Sergio Rodríguez Martín ya es el Primer Capitán y no es candidato.
 - Cada jugador vota una única vez, eligiendo a 2 compañeros.
 - Se registra quién ha votado (control de asistencia), pero no a quién votó.
