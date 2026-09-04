@@ -490,9 +490,8 @@ label.campo {
 .ranking-nombre {
   font-weight: 600;
   font-size: 0.96rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .ranking-etiqueta {
@@ -589,4 +588,102 @@ footer {
   color: var(--texto-suave);
   font-size: 0.82rem;
   padding: 1.2rem;
+}
+
+/* ---------- Responsive / móvil ---------- */
+@media (max-width: 600px) {
+  header.top {
+    padding: 2rem 1rem 2.6rem;
+  }
+
+  header.top h1 {
+    font-size: 1.6rem;
+  }
+
+  header.top p {
+    font-size: 0.82rem;
+  }
+
+  nav.tabs a {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  main {
+    padding: 0 0.8rem;
+  }
+
+  .card {
+    padding: 1.2rem 1.1rem;
+  }
+
+  .card h2 {
+    font-size: 1.1rem;
+  }
+
+  .resultado-mini-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .candidatos-lista {
+    grid-template-columns: 1fr;
+  }
+
+  .asistencia-lista {
+    grid-template-columns: 1fr;
+  }
+
+  .capitan-actual {
+    gap: 0.8rem;
+    padding: 1rem;
+  }
+
+  .capitan-actual .nombre {
+    font-size: 1rem;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  /* La fila de ranking pasa a dos líneas: nombre arriba a ancho completo,
+     votos abajo, para que ningún nombre largo se corte. */
+  .ranking-row {
+    flex-wrap: wrap;
+    padding: 0.7rem 0.8rem;
+  }
+
+  .ranking-info {
+    flex-basis: calc(100% - 26px - 40px - 0.9rem - 0.9rem);
+  }
+
+  .avatar {
+    width: 34px;
+    height: 34px;
+    font-size: 0.75rem;
+  }
+
+  .ranking-votos {
+    flex-basis: 100%;
+    width: auto;
+    text-align: left;
+    margin-top: 0.55rem;
+    padding-left: calc(26px + 34px + 0.9rem + 0.9rem);
+  }
+
+  .ranking-votos-num {
+    margin-bottom: 0.25rem;
+  }
+}
+
+@media (max-width: 380px) {
+  header.top h1 {
+    font-size: 1.4rem;
+  }
+
+  .ranking-votos {
+    padding-left: 0;
+  }
+
+  .ranking-row {
+    gap: 0.6rem;
+  }
 }
